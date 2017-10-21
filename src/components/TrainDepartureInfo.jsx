@@ -88,11 +88,11 @@ export default class TrainDepartureInfo extends Component {
     let serviceText = null;
     if (this.state.departure.etd === 'Cancelled') {
       serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service has been cancelled.</p>;
-    } else if (this.state.departure.etd !== 'On time') {
-      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed and is expected to depart at {this.state.departure.etd}</p>;
     } else if (this.state.departure.etd === 'Delayed') {
       serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed. No further information is available at this time.</p>;
-    }
+    } else if (this.state.departure.etd !== 'On time') {
+      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed and is expected to depart at {this.state.departure.etd}</p>;
+    } 
 
     return (
       <ListItem
