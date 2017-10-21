@@ -83,7 +83,7 @@ class Departures extends Component {
             secondaryText={this.state.subtitle}
             disabled={true}
           />
-        {this.state.loading ? <Spinner error={this.state.error} /> : this.state.departures}
+          {this.state.loading ? <Spinner error={this.state.error} /> : this.state.departures}
         </List>
       </Paper>
     );

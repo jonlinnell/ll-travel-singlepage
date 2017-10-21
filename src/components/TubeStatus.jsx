@@ -53,7 +53,7 @@ export default class TubeStatus extends Component {
         <List style={{ padding: 0 }}>
           <ListItem
             primaryText='Tube Status'
-            secondaryText='Tap a disrupted line for more info.'
+            secondaryText='Visit tfl.gov.uk for more info.'
             disabled={true}
           />
         {this.state.loading ? <Spinner error={this.state.error} errorText={errorText} /> : lines}

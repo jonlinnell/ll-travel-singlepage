@@ -14,13 +14,13 @@
 
 @font-face {
     font-family: 'DIN Round Web';
-    src: url('../public/fonts/DINRoundWeb.eot');
-    src: url('../public/fonts/DINRoundWeb.eot?#iefix') format("embedded-opentype"), url('../public/fonts/DINRoundWeb.woff') format("woff"), url('../public/fonts/DINRoundWeb.ttf') format("truetype")
+    src: url('./fonts/DINRoundWeb.eot');
+    src: url('./fonts/DINRoundWeb.eot?#iefix') format("embedded-opentype"), url('./fonts/DINRoundWeb.woff') format("woff"), url('./fonts/DINRoundWeb.ttf') format("truetype")
 }
 @font-face {
     font-family: 'DIN Round Web Medium';
-    src: url('../public/fonts/DINRoundWeb-Medium.eot');
-    src: url('../public/fonts/DINRoundWeb-Medium.eot?#iefix') format("embedded-opentype"), url('../public/fonts/DINRoundWeb-Medium.woff') format("woff"), url('../public/fonts/DINRoundWeb-Medium.ttf') format("truetype")
+    src: url('./fonts/DINRoundWeb-Medium.eot');
+    src: url('./fonts/DINRoundWeb-Medium.eot?#iefix') format("embedded-opentype"), url('./fonts/DINRoundWeb-Medium.woff') format("woff"), url('./fonts/DINRoundWeb-Medium.ttf') format("truetype")
 }
 
 body {
@@ -40,26 +40,26 @@ body {
 
 @media (min-width: 600px) {
     footer {
-        background-image: url('../public/img/footer-small.jpg')
+        background-image: url('./img/footer-small.jpg')
     }
 }
 @media (min-width: 760px) {
     footer {
-        background-image: url('../public/img/footer-mid.jpg');
+        background-image: url('./img/footer-mid.jpg');
     }
 }
 @media (min-width: 960px) {
     footer {
-        background-image: url('../public/img/footer-large.jpg')
+        background-image: url('./img/footer-large.jpg')
     }
 }
 @media (min-width: 1200px) {
     footer {
-        background-image: url('../public/img/footer-full.jpg');
+        background-image: url('./img/footer-full.jpg');
     }
 }
 @media (min-width: 1600px) {
     footer {
-        background-image: url('../public/img/footer-ultra-wide.jpg');
+        background-image: url('./img/footer-ultra-wide.jpg');
     }
 }

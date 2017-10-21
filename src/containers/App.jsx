@@ -1,17 +1,9 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import ResponsiveNavigation from '../components/ResponsiveNavigation';
 import PageHome from './Home';
-import PageNationalRail from './NationalRail';
-import PageAbout from './About';
-import PageBus from './Bus';
 
 injectTapEventPlugin();
 
@@ -33,17 +25,7 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Router className='sitesContainer'>
-          <div style={{ flex: 1 }}>
-            <Route exact path='/travel/' component={PageHome}/>
-            <Route path='/travel/nationalrail/' component={PageNationalRail}/>
-            <Route path='/travel/bus/' component={PageBus}/>
-            <Route path='/travel/about/' component={PageAbout}/>
-            <Redirect to='/travel/' />
-            <footer />
-            <ResponsiveNavigation parent={this} />
-          </div>
-        </Router>
+        <PageHome />
       </MuiThemeProvider>
     );
   }

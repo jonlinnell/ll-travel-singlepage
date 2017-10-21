@@ -40,15 +40,15 @@ class NationalRailStatus extends Component {
         app_key: api.tfl.app_key
       }
     })
-    .then((response) => {
-      component.setState({
-        railData: response.data,
-        loading: false
+      .then((response) => {
+        component.setState({
+          railData: response.data,
+          loading: false
+        });
+      })
+      .catch(() => {
+        this.setState({ error: true });
       });
-    })
-    .catch(() => {
-      this.setState({ error: true });
-    });
   }
   componentDidMount() {
     this.loadData();
