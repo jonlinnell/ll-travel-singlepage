@@ -1,7 +1,6 @@
 {
   "name": "ll-travel",
   "version": "0.1.0",
-  "homepage": "http://lboro.london/travel",
   "description": "Dynamic travel information",
   "private": true,
   "dependencies": {
