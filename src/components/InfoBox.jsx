@@ -17,7 +17,8 @@ const urlStyle = {
   color: 'white',
   fontFamily: 'DIN Round Web',
   fontSize: '1.8rem',
-  lineHeight: '1em'
+  lineHeight: '1em',
+  marginLeft: '12px'
 }
 
 const iconProps = {
@@ -29,7 +30,7 @@ export default class InfoBox extends Component {
     return (
       <Paper className='hoc' style={ infoBoxStyles }>
         <p style={ copyStyle }>Get this information on your phone, laptop, or tablet.</p>
-        <div className='d-flex align-items-start justify-content-around'>
+        <div className='d-flex align-items-start justify-content-center'>
           <IconWeb {...iconProps} />
           <p style={ urlStyle }>lboro.london/travel</p>
         </div>
