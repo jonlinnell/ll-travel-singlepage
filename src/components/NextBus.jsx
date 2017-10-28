@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import Paper from 'material-ui/Paper';
-import { List, ListItem } from 'material-ui';
+import { List } from 'material-ui';
+import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import NextBusInfo from '../components/NextBusInfo';
+
+import headerImg from '../img/FFFFFF-1.png';
 
 const errorText = 'Unable to load bus information. Did you enter the code correctly?';
 
@@ -76,10 +79,10 @@ export default class NextBus extends Component {
     return (
       <Paper className='hoc'>
         <List style={{ padding: 0 }}>
-          <ListItem
-            primaryText={this.state.title || this.state.adHocTitle || 'Buses'}
-            secondaryText={this.state.subtitle || 'Next buses calling at this stop'}
-            disabled={true}
+          <Header
+            title={this.state.title || this.state.adHocTitle || 'Buses'}
+            subtitle={this.state.subtitle || 'Next buses calling at this stop'}
+            bg={headerImg}
           />
           {this.state.loading ?
             <Spinner error={this.state.error} errorText={errorText} />

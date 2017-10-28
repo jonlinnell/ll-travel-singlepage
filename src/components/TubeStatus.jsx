@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { List, ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
+import Header from '../components/Header';
 import LineStatus from '../components/LineStatus';
 import Spinner from '../components/Spinner';
+
+import headerImg from '../img/FFFFFF-1.png';
+
 import api from '../utils/api';
 
 const errorText = 'Tube data not loading is very unusual, so this should be reported to Jon.';
@@ -51,10 +55,10 @@ export default class TubeStatus extends Component {
     return (
       <Paper className='hoc'>
         <List style={{ padding: 0 }}>
-          <ListItem
-            primaryText='Tube Status'
-            secondaryText='Visit tfl.gov.uk for more info.'
-            disabled={true}
+          <Header
+            title='Tube status'
+            subtitle='Visit tfl.gov.uk for more information'
+            bg={headerImg}
           />
         {this.state.loading ? <Spinner error={this.state.error} errorText={errorText} /> : lines}
         </List>

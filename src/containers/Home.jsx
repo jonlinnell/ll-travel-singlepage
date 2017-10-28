@@ -19,13 +19,13 @@ export default class Homepage extends Component {
           </div>
           <div className='col-md-3'>
             <Departures
-              title='Trains departing from Stratford Intl.'
-              subtitle='To London St. Pancras'
+              title='Stratford International'
+              subtitle='Trains to London St. Pancras'
               station='SFA'
               destination='STP'
             />
             <Departures
-              title='Trains departing from London St. Pancras'
+              title='London St. Pancras'
               subtitle='Trains calling at Loughborough'
               station='STP'
               destination='LBO'
@@ -33,7 +33,8 @@ export default class Homepage extends Component {
           </div>
           <div className='col-md-3'>
             <Departures
-              title='Overground trains from Hackney Wick'
+              title='Hackney Wick'
+              subtitle='London Overground services'
               station='HKW'
               limit='10'
             />

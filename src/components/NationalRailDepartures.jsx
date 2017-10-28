@@ -2,9 +2,12 @@
 import React, { Component } from 'react';
 import Darwin from 'national-rail-darwin';
 import Paper from 'material-ui/Paper';
-import { List, ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
+import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import TrainDepartureInfo from '../components/TrainDepartureInfo';
+
+import headerImg from '../img/FFFFFF-1.png';
 
 import api from '../utils/api';
 
@@ -78,10 +81,10 @@ class Departures extends Component {
     return (
       <Paper style={{ marginBottom: '1rem' }}>
         <List style={{ padding: 0 }}>
-          <ListItem
-            primaryText={this.state.title}
-            secondaryText={this.state.subtitle}
-            disabled={true}
+          <Header
+            title={this.state.title}
+            subtitle={this.state.subtitle}
+            bg={headerImg}
           />
           {this.state.loading ? <Spinner error={this.state.error} /> : this.state.departures}
         </List>
