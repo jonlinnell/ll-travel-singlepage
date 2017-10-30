@@ -25,9 +25,12 @@ class Departures extends Component {
       title: props.title,
       subtitle: props.subtitle,
       station: props.station,
-      exclude: props.exclude || null,
+      timeOffset: props.timeOffset,
+      timeWindow: props.timeWindow,
+      rows: props.limit || 5,
+      filter: props.filter,
       destination: props.destination,
-      limit: props.limit || 5
+      exclude: props.exclude
     };
   }
 
@@ -35,10 +38,15 @@ class Departures extends Component {
     const temp = [];
     this.setState({ loading: true });
 
-    rail.getDepartureBoardWithDetails(this.state.station, {
+    const options = {
+      timeOffset: this.state.timeOffset,
+      timeWindow: this.state.timeWindow,
       rows: this.state.limit,
+      filter: this.state.filter,
       destination: this.state.destination
-    }, (err, response) => {
+    };
+
+    rail.getDepartureBoardWithDetails(this.state.station, options, (err, response) => {
       if (err) {
         this.setState({ error: true });
       } else {
@@ -69,9 +77,12 @@ class Departures extends Component {
       title: nextProps.title,
       subtitle: nextProps.subtitle,
       station: nextProps.station,
-      exclude: nextProps.exclude,
+      timeOffset: nextProps.timeOffset,
+      timeWindow: nextProps.timeWindow,
+      rows: nextProps.limit,
+      filter: nextProps.filter,
       destination: nextProps.destination,
-      limit: nextProps.limit
+      exclude: nextProps.exclude
     }, () => {
       this.loadData();
     });
