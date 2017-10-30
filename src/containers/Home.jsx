@@ -41,9 +41,9 @@ export default class Homepage extends Component {
             />
             <Departures
               title='Stratford'
-              subtitle='Regional train services'
+              subtitle='Regional train services. Excludes TfL Rail services to London Liverpool Street.'
               station='SRA'
-              exclude='RMD,CLJ'
+              exclude='RMD,CLJ,LST'
               limit='10'
             />
           </div>
