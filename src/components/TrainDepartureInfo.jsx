@@ -15,16 +15,19 @@ const subsequentCallingPointStyle = {
   marginLeft: '12px'
 };
 
+const platformNumberSize = '1.3rem';
+
 const platformStyle = {
   fontSize: '0.8rem',
   fontWeight: 400,
-  height: '1.5rem',
-  lineHeight: '1.5rem',
-  width: '1.5rem',
+  height: platformNumberSize,
+  lineHeight: platformNumberSize,
+  width: platformNumberSize,
   textAlign: 'center',
-  border: '1px solid #333',
+  border: '1px solid #CCC',
   borderRadius: '3px',
-  backgroundColor: '#FCFCFC'
+  backgroundColor: '#FCFCFC',
+  marginRight: '12px'
 };
 
 const operatorStyle = {
@@ -87,11 +90,11 @@ export default class TrainDepartureInfo extends Component {
   render() {
     let serviceText = null;
     if (this.state.departure.etd === 'Cancelled') {
-      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service has been cancelled.</p>;
+      serviceText = <p className='mt-1 mb-0 text-muted' style={lateTextStyle}>This service has been cancelled.</p>;
     } else if (this.state.departure.etd === 'Delayed') {
-      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed. No further information is available at this time.</p>;
+      serviceText = <p className='mt-1 mb-0 text-muted' style={lateTextStyle}>This service is delayed. No further information is available at this time.</p>;
     } else if (this.state.departure.etd !== 'On time') {
-      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed and is expected to depart at {this.state.departure.etd}</p>;
+      serviceText = <p className='mt-1 mb-0 text-muted' style={lateTextStyle}>This service is delayed and is expected to depart at {this.state.departure.etd}</p>;
     } 
 
     return (
@@ -99,19 +102,29 @@ export default class TrainDepartureInfo extends Component {
         nestedItems={this.state.departure.etd === 'Cancelled'
         ? undefined
         : this.state.extendedDepartureInfo}
+        style={{padding: 'none !important'}}
         primaryTogglesNestedList={true}
         autoGenerateNestedIndicator={false}
         nestedListStyle={nestedListStyle}
         disabled={this.state.departure.etd === 'Cancelled'} // does this work?
       >
-        <div className='d-flex w-100 justify-content-between'>
-          <p className={this.state.departure.etd === 'On time'
-            ? 'mb-1'
-            : 'mb-1 text-danger'} style={{ fontWeight: 400 }}
+        <div className='d-flex w-100 justify-content-start align-items-center'>
+          {
+            this.state.departure.platform
+            ? <p style={platformStyle} className='m-0 mr-3'>{this.state.departure.platform}</p>
+            : null
+          }
+          <p
+            className={
+              this.state.departure.etd === 'On time'
+                ? 'mb-0'
+                : 'mb-0 text-danger'
+              }
+            style={{ fontWeight: 400 }}
           >
             {this.state.departure.destination.name}
           </p>
-          <small className={'text-muted'}>{this.state.departure.std}</small>
+          <small className='text-muted ml-auto m-0'>{this.state.departure.std}</small>
         </div>
         {serviceText}
       </ListItem>
