@@ -24,6 +24,7 @@ class Departures extends Component {
       title: props.title,
       subtitle: props.subtitle,
       station: props.station,
+      exclude: props.exclude || null,
       destination: props.destination,
       limit: props.limit || 5
     };
@@ -41,7 +42,11 @@ class Departures extends Component {
         this.setState({ error: true });
       } else {
         response.trainServices.map((departure, i) => {
-          temp.push(<TrainDepartureInfo key={i} departure={departure} />);
+          if (departure.destination.crs === this.state.exclude) {
+            return 1;
+          } else {
+            temp.push(<TrainDepartureInfo key={i} departure={departure} />);
+          }
         });
 
         this.setState({
@@ -59,6 +64,7 @@ class Departures extends Component {
       title: nextProps.title,
       subtitle: nextProps.subtitle,
       station: nextProps.station,
+      exclude: nextProps.exclude,
       destination: nextProps.destination,
       limit: nextProps.limit
     }, () => {
