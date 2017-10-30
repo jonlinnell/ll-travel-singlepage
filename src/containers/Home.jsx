@@ -43,7 +43,8 @@ export default class Homepage extends Component {
               title='Stratford'
               subtitle='Regional train services'
               station='SRA'
-              limit='7'
+              exclude='RMD,CLJ'
+              limit='10'
             />
           </div>
           <div className='col-md-3 col-lg-3 col-xl-3'>

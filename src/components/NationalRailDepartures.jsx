@@ -6,6 +6,7 @@ import { List } from 'material-ui/List';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import TrainDepartureInfo from '../components/TrainDepartureInfo';
+import _ from 'lodash';
 
 import headerImg from '../img/FFFFFF-1.png';
 
@@ -41,8 +42,12 @@ class Departures extends Component {
       if (err) {
         this.setState({ error: true });
       } else {
+        let excludes = null;
+        if (this.state.exclude) {
+          excludes = this.state.exclude.split(',');
+        }
         response.trainServices.map((departure, i) => {
-          if (departure.destination.crs === this.state.exclude) {
+          if (_.find(excludes, function(o) { return o === departure.destination.crs })) {
             return 1;
           } else {
             temp.push(<TrainDepartureInfo key={i} departure={departure} />);
