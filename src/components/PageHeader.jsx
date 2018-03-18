@@ -36,9 +36,11 @@ export default class PageHeader extends Component {
       date: d.date,
       time: d.time
     }
+
+    this.updateDate = this.updateDate.bind(this)
   }
 
-  updateDate = () => {
+  updateDate() {
     let d = getLocalTimeString();
     this.setState({
       date: d.date,
@@ -46,9 +48,9 @@ export default class PageHeader extends Component {
     });
   }
 
-  componentDidMount = () => { this.interval = setInterval(this.updateDate, 1000); }
+  componentDidMount() { this.interval = setInterval(this.updateDate, 1000); }
 
-  componentWillUnmount = () => { clearInterval(this.interval); }
+  componentWillUnmount() { clearInterval(this.interval); }
 
   render() {
     return (

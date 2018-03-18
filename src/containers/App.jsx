@@ -20,7 +20,7 @@ export default class App extends Component {
     this.select = this.select.bind(this);
   }
 
-  select = index => this.setState({ selectedIndex: index });
+  select(index) { this.setState({ selectedIndex: index }); }
 
   render() {
     return (

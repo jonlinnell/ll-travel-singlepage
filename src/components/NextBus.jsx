@@ -26,15 +26,14 @@ export default class NextBus extends Component {
 
   loadData() {
     let component = this; // eslint-disable-line prefer-const
-    axios.get('http://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1', {
-      params: {
-        StopCode1: this.state.stopCode,
+    axios.post(`${process.env.COUNTDOWN_API_PROXY}/${this.state.stopCode}`, {
+      options: {
         ReturnList: 'EstimatedTime,LineID,DestinationName,StopPointName'
       }
     })
     .then((response) => {
       component.setState({
-        busData: JSON.parse(`[${response.data.replace(/]/g, '],').replace(/\],$/, ']').toString()}]`),
+        busData: response.data,
         loading: false
       }, () => {
         if (this.state.busData[0]) {

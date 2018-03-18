@@ -8,8 +8,6 @@ import Spinner from '../components/Spinner';
 
 import headerImg from '../img/FFFFFF-1.png';
 
-import api from '../utils/api';
-
 const errorText = 'Tube data not loading is very unusual, so this should be reported to Jon.';
 
 export default class TubeStatus extends Component {
@@ -25,8 +23,8 @@ export default class TubeStatus extends Component {
     let component = this; // eslint-disable-line prefer-const
     axios.get('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status', {
       params: {
-        app_id: api.tfl.app_id,
-        app_key: api.tfl.app_key
+        app_id: process.env.TFL_APP_ID,
+        app_key: process.env.TFL_API_KEY
       }
     })
     .then((response) => {

@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react';
-import Darwin from 'national-rail-darwin';
+import axios from 'axios'
 import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import Header from '../components/Header';
@@ -9,10 +9,6 @@ import TrainDepartureInfo from '../components/TrainDepartureInfo';
 import _ from 'lodash';
 
 import headerImg from '../img/FFFFFF-1.png';
-
-import api from '../utils/api';
-
-const rail = new Darwin(api.darwinApiKey);
 
 class Departures extends Component {
   constructor(props) {
@@ -35,7 +31,7 @@ class Departures extends Component {
   }
 
   loadData() {
-    const temp = [];
+    let temp = [];
     this.setState({ loading: true });
 
     const options = {
@@ -46,29 +42,29 @@ class Departures extends Component {
       destination: this.state.destination
     };
 
-    rail.getDepartureBoardWithDetails(this.state.station, options, (err, response) => {
-      if (err) {
-        this.setState({ error: true });
-      } else {
+    axios.post(`${process.env.DARWIN_API_PROXY}/getDepartureBoardWithDetails/${this.state.station}`, {
+      token: process.env.DARWIN_TOKEN  
+    })
+      .then((response) => {
         let excludes = null;
-        if (this.state.exclude) {
-          excludes = this.state.exclude.split(',');
-        }
-        response.trainServices.map((departure, i) => {
-          if (_.find(excludes, function(o) { return o === departure.destination.crs })) {
-            return 1;
-          } else {
-            temp.push(<TrainDepartureInfo key={i} departure={departure} />);
+          if (this.state.exclude) {
+            excludes = this.state.exclude.split(',');
           }
-        });
+          response.data.trainServices.map((departure, i) => {
+            if (_.find(excludes, function(o) { return o === departure.destination.crs })) {
+              return 1;
+            } else {
+              temp.push(<TrainDepartureInfo key={i} departure={departure} />);
+            }
 
-        this.setState({
-          loading: false,
-          departures: temp,
-          raw: response
-        });
-      }
-    });
+            this.setState({
+              loading: false,
+              departures: temp,
+              raw: response.data
+            })
+        })
+      })
+      .catch(() => this.setState({ error: true }))
   }
 
   componentWillReceiveProps(nextProps) {

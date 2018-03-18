@@ -74,7 +74,7 @@ export default class TrainDepartureInfo extends Component {
     super(props);
 
     const extendedDepartureInfo = [];
-    extendedDepartureInfo.push(<ServiceInformation service={props.departure} />);
+    extendedDepartureInfo.push(<ServiceInformation key={'ServiceInformation'} service={props.departure} />);
     props.departure.subsequentCallingPoints.map((station, i) => {
       extendedDepartureInfo.push(<SubsequentCallingPoint key={i} station={station} />);
     });
